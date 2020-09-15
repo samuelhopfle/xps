@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="2.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+    <!-- language, needed for the catalog  -->
+    <xsl:variable name="language" select="doc('language')"/>
+
+    <!-- include translations -->
+    <xsl:variable name="includes" select="'./i18n?select=global_*.xml'"/>
+    <xsl:variable name="translations" select="collection($includes)/catalogue[@xml:lang=$language]"/>
+    <xsl:key name="i18n" match="message" use="@key"/>
+
+    <!-- match example -->
+    <xsl:template match="example">
+        <fo:root font-family="Arial">
+            <fo:layout-master-set>
+                <!-- layout definition -->
+                <fo:simple-page-master master-name="main" page-height="29.7cm" page-width="21cm" margin-top="0.5cm"
+                                       margin-bottom="0.5cm" margin-left="1cm" margin-right="1cm">
+                    <fo:region-body margin-top="1cm" margin-bottom="1.5cm"/>
+                </fo:simple-page-master>
+            </fo:layout-master-set>
+            <!-- content -->
+            <fo:page-sequence master-reference="main">
+                <fo:flow flow-name="xsl-region-body">
+                    <fo:block font-size="12pt" space-before="1.2cm" space-after="0.2cm" font-weight="bold"
+                              keep-with-next.within-page="always">
+                        <xsl:value-of select="key('i18n', 'Title', $translations)"/>
+                    </fo:block>
+                    <fo:table border-collapse="collapse" width="12cm" table-layout="fixed">
+                        <fo:table-column column-number="1" column-width="6cm"/>
+                        <fo:table-column column-number="2" column-width="6cm"/>
+                        <fo:table-body>
+                            <fo:table-row>
+                                <fo:table-cell text-align="left">
+                                    <fo:block>
+                                        <xsl:value-of select="key('i18n','GetLanguage',$translations)"/>
+                                    </fo:block>
+                                </fo:table-cell>
+                                <fo:table-cell text-align="left">
+                                    <fo:block>
+                                        <xsl:value-of select="$language"/>
+                                    </fo:block>
+                                </fo:table-cell>
+                            </fo:table-row>
+                            <fo:table-row>
+                                <fo:table-cell text-align="left">
+                                    <fo:block>
+                                        <xsl:value-of select="key('i18n','FormatADateWithJava',$translations)"/>
+                                    </fo:block>
+                                </fo:table-cell>
+                                <fo:table-cell text-align="left">
+                                    <fo:block>
+                                        <xsl:value-of select="doc(concat('date/long/', myDate))"/>
+                                    </fo:block>
+                                </fo:table-cell>
+                            </fo:table-row>
+                        </fo:table-body>
+                    </fo:table>
+                </fo:flow>
+            </fo:page-sequence>
+        </fo:root>
+    </xsl:template>
+</xsl:stylesheet>

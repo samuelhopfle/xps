@@ -1,0 +1,21 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
+
+group = 'ch.less.xps'
+version = 'v 2.1'
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    compile group: 'org.apache.xmlgraphics', name: 'fop', version: '2.5'
+    compile group: 'net.sf.saxon', name: 'Saxon-HE', version: '10.1'
+}

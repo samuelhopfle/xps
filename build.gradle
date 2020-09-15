@@ -1,0 +1,78 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'war'
+}
+
+group = 'ch.less'
+version = 'v 2.1'
+description 'XML Printing Service'
+
+dependencies {
+    implementation project(':xps-lib')
+}
+
+springBoot {
+    buildInfo()
+}
+
+bootWar {
+    baseName 'XPS'
+    mainClassName = 'ch.less.infrastructure.XPSApplication'
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url = "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/"
+        }
+    }
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = '11'
+
+    dependencies {
+
+        compile 'org.springframework.boot:spring-boot-starter-web'
+        compile 'org.springframework.boot:spring-boot-starter-log4j2'
+        compile 'org.springframework.boot:spring-boot-starter-tomcat'
+
+        compile 'org.projectlombok:lombok:1.18.12'
+        compile group: 'com.j2html', name: 'j2html', version: '1.4.0'
+
+        annotationProcessor 'org.projectlombok:lombok'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    configurations {
+        developmentOnly
+        runtimeClasspath {
+            extendsFrom developmentOnly
+        }
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+        all {
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+            exclude module: 'logback-classic'
+        }
+    }
+}
+
+
+
+
+
+
+

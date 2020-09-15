@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/xps-lib",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "zhhos",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
+}

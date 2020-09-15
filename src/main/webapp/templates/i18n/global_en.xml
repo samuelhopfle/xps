@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<catalogue xml:lang="en">
+    <message key="Title">HTML Example</message>
+    <message key="GetLanguage">Get the language</message>
+    <message key="FormatADateWithJava">Format a date with Java i18n</message>
+</catalogue>

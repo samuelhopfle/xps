@@ -1,0 +1,54 @@
+<!-- NOTE: this is the version of the configuration -->
+<fop version="1.0">
+
+    <strict-configuration>true</strict-configuration>
+
+    <!-- base URL for resolving relative URLs -->
+    <base>.</base>
+    <font-base>../fonts</font-base>
+    <use-cache>true</use-cache>
+
+    <!-- source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap img, default: 72dpi -->
+    <source-resolution>72</source-resolution>
+    <!-- target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
+    <target-resolution>72</target-resolution>
+
+    <!-- default page-height and page-width, in case
+         value is specified as auto -->
+    <default-page-settings height="11in" width="8.26in"/>
+
+    <!-- information for specific renderers -->
+    <!-- uses renderer mime type for renderers -->
+    <renderers>
+        <renderer mime="application/pdf">
+            <version>1.7</version>
+            <filterList>
+                <value>flate</value>
+            </filterList>
+
+            <fonts>
+                <font embed-url="../fonts/fa-regular-400.ttf">
+                    <font-triplet name="FontAwesome" style="normal" weight="normal"/>
+                </font>
+                <font embed-url="../fonts/fa-solid-900.ttf">
+                    <font-triplet name="FontAwesome" style="normal" weight="900"/>
+                </font>
+                <font embed-url="../fonts/fa-light-300.ttf">
+                    <font-triplet name="FontAwesome" style="normal" weight="300"/>
+                </font>
+                <!-- Example:
+                  <font metrics-file="../fonts/whatever.xml.tt" kerning="yes" embed-url="../fonts/whatever.ttf">
+                    <font-triplet name="Space Age" style="italic" weight="normal"/>
+                    <font-triplet name="Space Age" style="normal" weight="normal"/>
+                    <font-triplet name="Space Age" style="italic" weight="bold"/>
+                    <font-triplet name="Space Age" style="normal" weight="bold"/>
+                  </font> -->
+
+                <!-- font directory -->
+                <directory recursive="true">.</directory>
+                <auto-detect/>
+            </fonts>
+        </renderer>
+    </renderers>
+</fop>
+

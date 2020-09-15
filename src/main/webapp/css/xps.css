@@ -1,0 +1,69 @@
+/**
+    basic app style layout - this template has to be adapted to your HTML content
+ */
+
+/* base definitions */
+body {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    margin: 2.5em 1.7em 1.7em 1.7em;
+}
+
+/* common text size definition */
+h1 {
+    font-size: 1.5em;
+    line-height: 1.6667em;
+    letter-spacing: 0.0833em;
+    margin-top: 1.6667em;
+    margin-bottom: 1.6667em;
+}
+
+h2 {
+    font-size: 1.3em;
+    font-weight: normal;
+    line-height: 1em;
+    letter-spacing: 0.0500em;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.1em;
+    border-bottom: 1px solid #AAA;
+}
+
+p {
+    font-size: 1em;
+}
+
+/* tables */
+table {
+    border: 0;
+    border-collapse: collapse;
+}
+
+th, td {
+    font-size: 1em;
+    padding: 0.25rem 0.4rem;
+    vertical-align: top;
+}
+
+th, thead {
+    background-color: #DCDCDC;
+}
+
+th, thead, td {
+    text-align: left;
+    vertical-align: text-top;
+}
+
+tr td {
+    background-color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: none;
+}
+
+tr:nth-child(even) {
+    background-color: #F5F5F5;
+}
