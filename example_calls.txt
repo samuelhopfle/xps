@@ -4,3 +4,10 @@ curl --location --request POST 'http://localhost:8090/html/en?template=example-h
 <example>
     <myDate>2020-09-09</myDate>
 </example>'
+
+curl --location --request POST 'http://localhost:8090/pdf/en?template=example-pdf.fo' \
+--header 'Content-Type: text/plain' \
+--data-raw '<?xml version="1.0" encoding="UTF-8" ?>
+<example>
+    <myDate>2020-09-09</myDate>
+</example>'
